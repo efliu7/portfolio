@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A quick look at Ethan Liu's software engineering and product experience at AMD, Dream Studio 9, and RBC Insurance." />
     <meta name="theme-color" content="#0d1b2a" />
     <title>Experience | Ethan Liu</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -10,21 +11,249 @@
     <script src="script.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
     <header class="site-header">
-      <a class="wordmark" href="index.html" aria-label="Ethan Liu, home"><span aria-hidden="true">E</span><span class="wordmark-cursor" aria-hidden="true"></span></a>
-      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span class="sr-only">Toggle navigation</span><span aria-hidden="true">menu</span></button>
-      <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav><a href="index.html">Home</a><a href="projects.html">Projects</a><a class="is-current" href="experience.html" aria-current="page">Experience</a><a href="about.html">About</a><a href="https://drive.google.com/file/d/12K8Z2sb5uFqbBXeucd8AHHMx-eDDHIYc/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a></nav>
+      <a class="wordmark" href="index.html" aria-label="Ethan Liu, home">
+        <span aria-hidden="true">E</span><span class="wordmark-cursor" aria-hidden="true"></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="sr-only">Toggle navigation</span><span aria-hidden="true">menu</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav>
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a class="is-current" href="experience.html" aria-current="page">Experience</a>
+        <a href="about.html">About</a>
+        <a href="https://drive.google.com/file/d/12K8Z2sb5uFqbBXeucd8AHHMx-eDDHIYc/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a>
+      </nav>
     </header>
-    <main class="page-shell">
-      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Directory / experience</p>
-      <h1 class="ascii-heading" aria-label="Experience"><span aria-hidden="true">██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
+
+    <main class="experience-page" id="main">
+      <header class="experience-intro">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Directory / work_history</p>
+        <h1 class="ascii-heading" aria-label="Work"><span aria-hidden="true">██╗    ██╗ ██████╗ ██████╗ ██╗  ██╗
 ██║    ██║██╔═══██╗██╔══██╗██║ ██╔╝
 ██║ █╗ ██║██║   ██║██████╔╝█████╔╝
 ██║███╗██║██║   ██║██╔══██╗██╔═██╗
 ╚███╔███╔╝╚██████╔╝██║  ██║██║  ██╗
  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝</span></h1>
-      <p>This page is queued up next.</p>
-      <a class="text-link" href="index.html">← Return to desktop</a>
+        <p class="experience-lede">
+          A quick rundown of the teams I have worked with, what I built, and the results.
+        </p>
+      </header>
+
+      <ol class="experience-list" aria-label="Work history, most recent first">
+        <li class="experience-record experience-record--amd">
+          <div class="experience-marker" aria-hidden="true"><span>01</span></div>
+          <article class="experience-window">
+            <div class="experience-window-bar">
+              <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span>amd_record.txt</span>
+            </div>
+            <div class="experience-window-body">
+              <header class="role-heading">
+                <div class="role-identity">
+                  <div class="company-mark company-mark--amd">
+                    <img src="assets/logos/amd.svg" alt="AMD" />
+                  </div>
+                  <div>
+                    <p class="role-company">Advanced Micro Devices</p>
+                    <h2>Software Engineer Co-op</h2>
+                  </div>
+                </div>
+                <div class="role-meta">
+                  <span><time datetime="2025-05">May 2025</time> / <time datetime="2026-08">Aug 2026</time></span>
+                  <span>Markham, ON</span>
+                </div>
+              </header>
+
+              <dl class="role-metrics" aria-label="Key outcomes">
+                <div><dt>Features</dt><dd>10+</dd></div>
+                <div><dt>Fewer deadlocks</dt><dd>~70%</dd></div>
+                <div><dt>Pull requests</dt><dd>115+</dd></div>
+              </dl>
+
+              <ul class="role-highlights">
+                <li>Built and improved a global test case management platform used by QA teams across Canada, India, and Shanghai.</li>
+                <li>Modernized the application from Angular 9 to Angular 12 and upgraded its backend services to .NET 9, improving maintainability and long-term support.</li>
+                <li>Built an end-to-end GitHub Actions integration and extended REST APIs to support automated and agent-based QA workflows.</li>
+                <li>Delivered AI-generated test case summaries and tagging to help engineers understand, organize, and navigate large test suites.</li>
+                <li>Created email test summary reports and a scheduling system that let teams automate when those reports were generated and delivered.</li>
+                <li>Implemented multiple guided onboarding tours across the application, along with Excel, Word, and PDF exports for test data and reports.</li>
+                <li>Developed a backend task queue that reduced database deadlocks by <strong>~70%</strong> and made long-running QA workflows more reliable.</li>
+                <li>Authored and merged <strong>115+ pull requests</strong> while working directly with QA engineers and stakeholders.</li>
+              </ul>
+
+              <div class="role-footer">
+                <ul class="role-stack" aria-label="Technologies used">
+                  <li>Angular</li><li>ASP.NET Core</li><li>Entity Framework</li><li>SQL Server</li>
+                </ul>
+                <span class="record-status"><i aria-hidden="true"></i>16 months</span>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <li class="experience-record experience-record--dream">
+          <div class="experience-marker" aria-hidden="true"><span>02</span></div>
+          <article class="experience-window">
+            <div class="experience-window-bar">
+              <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span>dream_studio_9_record.txt</span>
+            </div>
+            <div class="experience-window-body">
+              <header class="role-heading">
+                <div class="role-identity">
+                  <div class="company-mark company-mark--dream">
+                    <img src="assets/logos/dream-studio-9.png" alt="Dream Studio 9" />
+                  </div>
+                  <div>
+                    <p class="role-company">Dream Studio 9</p>
+                    <h2>Full-Stack Developer</h2>
+                  </div>
+                </div>
+                <div class="role-meta">
+                  <span><time datetime="2024-08">Aug 2024</time> / <time datetime="2024-11">Nov 2024</time></span>
+                  <span>Remote</span>
+                </div>
+              </header>
+
+              <dl class="role-metrics" aria-label="Key outcomes">
+                <div><dt>Features</dt><dd>15+</dd></div>
+                <div><dt>Faster data entry</dt><dd>~20%</dd></div>
+                <div><dt>Dispatch efficiency</dt><dd>~30%</dd></div>
+              </dl>
+
+              <ul class="role-highlights">
+                <li>Developed 15+ features across multiple client-facing projects, using direct feedback to improve application usability.</li>
+                <li>Owned changes across the full stack, connecting PHP and Symfony backend functionality with JavaScript interfaces and MySQL data.</li>
+                <li>Built a custom dispatch calendar with clear job categorization, intuitive navigation, and search functionality that increased efficiency by about 30%.</li>
+                <li>Introduced image and document upload widgets for a real estate management application, making data entry about 20% faster.</li>
+              </ul>
+
+              <div class="role-footer">
+                <ul class="role-stack" aria-label="Technologies used">
+                  <li>PHP</li><li>Symfony</li><li>JavaScript</li><li>MySQL</li>
+                </ul>
+                <span class="record-status"><i aria-hidden="true"></i>4 months</span>
+              </div>
+            </div>
+          </article>
+        </li>
+
+        <li class="experience-record experience-record--rbc">
+          <div class="experience-marker" aria-hidden="true"><span>03</span></div>
+          <article class="experience-window">
+            <div class="experience-window-bar">
+              <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+              <span>rbc_record.txt</span>
+            </div>
+            <div class="experience-window-body">
+              <header class="role-heading">
+                <div class="role-identity">
+                  <div class="company-mark company-mark--shield">
+                    <img src="assets/logos/rbc.svg" alt="RBC" />
+                  </div>
+                  <div>
+                    <p class="role-company">RBC Insurance</p>
+                    <h2>Analyst, Product Effectiveness</h2>
+                  </div>
+                </div>
+                <div class="role-meta">
+                  <span><time datetime="2023-05">May 2023</time> / <time datetime="2023-08">Aug 2023</time></span>
+                  <span>Mississauga, ON</span>
+                </div>
+              </header>
+
+              <dl class="role-metrics" aria-label="Key outcomes">
+                <div><dt>Test cases</dt><dd>200+</dd></div>
+                <div><dt>Coverage</dt><dd>~90%</dd></div>
+                <div><dt>Defects found</dt><dd>50+</dd></div>
+              </dl>
+
+              <ul class="role-highlights">
+                <li>Designed and executed 200+ user acceptance test cases across digital applications in an Agile environment, reaching <strong>90% test coverage</strong>.</li>
+                <li>Managed testing and defect tracking in Jira, ensuring the identification, reporting, and resolution of 50+ defects.</li>
+                <li>Developed a strong understanding of the end-user experience and helped ensure applications were effective and easy to use.</li>
+                <li>Communicated testing outcomes and usability concerns to product and development teams, supporting release readiness across digital applications.</li>
+              </ul>
+
+              <div class="role-footer">
+                <ul class="role-stack" aria-label="Skills and tools used">
+                  <li>UAT</li><li>Jira</li><li>Agile</li><li>QA</li>
+                </ul>
+                <span class="record-status"><i aria-hidden="true"></i>4 months</span>
+              </div>
+            </div>
+          </article>
+        </li>
+      </ol>
+
+      <footer class="experience-footer">
+        <span>End of work_history</span>
+        <a class="text-link" href="https://drive.google.com/file/d/12K8Z2sb5uFqbBXeucd8AHHMx-eDDHIYc/view?usp=sharing" target="_blank" rel="noreferrer">Full résumé <span aria-hidden="true">↗</span></a>
+      </footer>
+
+      <section class="activities-section" aria-labelledby="activities-title">
+        <header class="activities-heading">
+          <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Selected involvement</p>
+          <h2 class="ascii-heading ascii-heading-wide" id="activities-title" aria-label="Activities"><span aria-hidden="true"> █████╗  ██████╗████████╗██╗██╗   ██╗██╗████████╗██╗███████╗███████╗
+██╔══██╗██╔════╝╚══██╔══╝██║██║   ██║██║╚══██╔══╝██║██╔════╝██╔════╝
+███████║██║        ██║   ██║██║   ██║██║   ██║   ██║█████╗  ███████╗
+██╔══██║██║        ██║   ██║╚██╗ ██╔╝██║   ██║   ██║██╔══╝  ╚════██║
+██║  ██║╚██████╗   ██║   ██║ ╚████╔╝ ██║   ██║   ██║███████╗███████║
+╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝  ╚═══╝  ╚═╝   ╚═╝   ╚═╝╚══════╝╚══════╝</span></h2>
+          <p>Hackathons, leadership, and learning beyond the classroom.</p>
+        </header>
+
+        <div class="activities-grid">
+          <article class="activity-card activity-card--hackathon">
+            <div class="activity-card-top">
+              <span class="activity-icon activity-icon--logo activity-icon--htn" aria-hidden="true">
+                <img src="assets/logos/hackthenorth.png" alt="" />
+              </span>
+              <span class="activity-badge">2x Winner</span>
+            </div>
+            <div class="activity-card-copy">
+              <p class="activity-type">Hackathon</p>
+              <h3>Hack the North</h3>
+              <p>Built and presented <em>traint</em> at Hack the North, Canada's biggest hackathon, earning two project awards for the AI-powered training platform.</p>
+            </div>
+            <span class="activity-index">ACT / 01</span>
+          </article>
+
+          <article class="activity-card activity-card--fellowship">
+            <div class="activity-card-top">
+              <span class="activity-icon activity-icon--logo activity-icon--rbc" aria-hidden="true">
+                <img src="assets/logos/rbc.svg" alt="" />
+              </span>
+              <span class="activity-badge">2024 Fellow</span>
+            </div>
+            <div class="activity-card-copy">
+              <p class="activity-type">Fellowship</p>
+              <h3>RBC Design Thinking</h3>
+              <p>Joined the 2024 cohort to practice user-centred problem solving, rapid ideation, and iterative solution design.</p>
+            </div>
+            <span class="activity-index">ACT / 02</span>
+          </article>
+
+          <article class="activity-card activity-card--leadership">
+            <div class="activity-card-top">
+              <span class="activity-icon activity-icon--logo activity-icon--social-impact" aria-hidden="true">
+                <img src="assets/logos/western-tech-social-impact.svg" alt="" />
+              </span>
+              <span class="activity-badge">Project Manager</span>
+            </div>
+            <div class="activity-card-copy">
+              <p class="activity-type">Student organization</p>
+              <h3>Western Tech for Social Impact</h3>
+              <p>Coordinated a student project team applying technology to a community-focused social impact problem.</p>
+            </div>
+            <span class="activity-index">ACT / 03</span>
+          </article>
+        </div>
+      </section>
     </main>
   </body>
 </html>
