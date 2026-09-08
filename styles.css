@@ -99,10 +99,7 @@ h1 {
 
 .pixel-window { align-self: center; width: 100%; border: 1px solid var(--mist); box-shadow: 18px 18px 0 var(--navy); image-rendering: pixelated; }
 .window-bar { display: flex; gap: 6px; align-items: center; height: 35px; padding: 0 12px; background: var(--mist); }
-.window-bar span { width: 8px; height: 8px; border-radius: 50%; }
-.window-bar span:nth-child(1) { background: #ff5f57; }
-.window-bar span:nth-child(2) { background: #febc2e; }
-.window-bar span:nth-child(3) { background: #28c840; }
+.window-bar span, .note-bar span, .call-window-controls span { width: 8px; height: 8px; border-radius: 0; background: var(--ink); }
 .pixel-desktop {
   position: relative;
   height: clamp(390px, 36vw, 470px);
@@ -131,7 +128,6 @@ h1 {
 .desktop-icon:hover .folder, .desktop-icon:hover .folder::before, .desktop-icon:focus-visible .folder, .desktop-icon:focus-visible .folder::before { background: var(--paper); }
 .desktop-note { position: absolute; z-index: 3; top: 82px; right: 42px; width: 260px; border: 1px solid var(--mist); box-shadow: 9px 9px 0 rgba(27, 38, 59, .8); }
 .note-bar { display: flex; justify-content: flex-end; gap: 4px; height: 20px; padding: 6px; background: var(--mist); }
-.note-bar span { width: 7px; height: 7px; background: var(--ink); }
 .note-body { min-height: 110px; padding: 35px 18px; background: rgba(27, 38, 59, .95); }
 .note-body p { margin: 0 0 10px; color: var(--paper); font-size: .62rem; white-space: nowrap; }
 .note-body p:last-child { margin-bottom: 0; }
@@ -164,9 +160,6 @@ h1 {
 .call-window { width: 100%; margin: 0; border: 1px solid var(--mist); background: var(--navy); box-shadow: 16px 16px 0 rgba(27, 38, 59, .85); font-family: var(--pixel); image-rendering: pixelated; }
 .call-titlebar { display: flex; align-items: center; justify-content: space-between; min-height: 38px; padding: 0 12px; color: var(--ink); background: var(--mist); font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; }
 .call-window-controls { display: flex; gap: 6px; }
-.call-window-controls span { width: 8px; height: 8px; border-radius: 50%; background: var(--ink); }
-.call-window-controls span:nth-child(2) { opacity: .64; }
-.call-window-controls span:nth-child(3) { opacity: .34; }
 .call-quality { display: flex; justify-self: end; align-items: end; gap: 2px; height: 12px; }
 .call-quality i { display: block; width: 3px; background: var(--ink); }
 .call-quality i:nth-child(1) { height: 4px; }
