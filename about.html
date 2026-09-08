@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Learn more about Ethan Liu, a software engineering student at Western University and former AMD software engineer co-op." />
     <meta name="theme-color" content="#0d1b2a" />
-    <title>About — Ethan Liu</title>
+    <title>About | Ethan Liu</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
@@ -17,11 +17,15 @@
       <a class="wordmark" href="index.html" aria-label="Ethan Liu, home">
         <span aria-hidden="true">E</span><span class="wordmark-cursor" aria-hidden="true"></span>
       </a>
-      <nav class="site-nav page-nav" aria-label="Main navigation">
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle>
+        <span class="sr-only">Toggle navigation</span><span aria-hidden="true">menu</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav>
         <a href="index.html">Home</a>
         <a href="projects.html">Projects</a>
         <a href="experience.html">Experience</a>
         <a class="is-current" href="about.html" aria-current="page">About</a>
+        <a href="https://drive.google.com/file/d/12K8Z2sb5uFqbBXeucd8AHHMx-eDDHIYc/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
 
@@ -38,9 +42,8 @@
 
           <div class="about-prose">
             <p>
-              I’m Ethan, a Software Engineering student at Western University who enjoys
-              turning messy problems into useful, thoughtful products. I’m graduating in
-              June 2027.
+              I’m Ethan, a Software Engineering student at Western University graduating
+              in June 2027.
             </p>
             <p>
               Most recently, I spent 16 months at AMD building and modernizing an internal
@@ -49,9 +52,9 @@
               that makes someone’s day-to-day work meaningfully easier.
             </p>
             <p>
-              I’m especially interested in full-stack development and practical AI-powered
-              applications, particularly where good engineering can simplify a complicated
-              workflow or make technology feel more intuitive.
+              I’m especially interested in applying AI to real workflows and building
+              applications that are genuinely useful. I learn best by doing: taking an idea,
+              building it end to end, and refining it through real feedback and use.
             </p>
           </div>
 
@@ -169,7 +172,7 @@
             <div class="hobby-card-copy">
               <h3>Volleyball</h3>
               <p>
-                I’m currently learning volleyball—still working on the fundamentals, but
+                I’m currently learning volleyball. I’m still working on the fundamentals, but
                 enjoying having a new sport to improve at.
               </p>
             </div>

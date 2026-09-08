@@ -1,5 +1,6 @@
 const menuButton = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
+const header = document.querySelector(".site-header");
 const year = document.querySelector("[data-year]");
 
 menuButton?.addEventListener("click", () => {
@@ -12,5 +13,12 @@ nav?.addEventListener("click", () => {
   menuButton?.setAttribute("aria-expanded", "false");
   nav.classList.remove("is-open");
 });
+
+const updateHeaderSurface = () => {
+  header?.classList.toggle("is-scrolled", window.scrollY > 12);
+};
+
+updateHeaderSurface();
+window.addEventListener("scroll", updateHeaderSurface, { passive: true });
 
 if (year) year.textContent = String(new Date().getFullYear());
