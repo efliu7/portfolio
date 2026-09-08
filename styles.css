@@ -120,6 +120,49 @@ h1 {
   background-image: linear-gradient(rgba(119, 141, 169, .14) 1px, transparent 1px), linear-gradient(90deg, rgba(119, 141, 169, .14) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+.desktop-boot { display: none; }
+.desktop-boot[hidden] { display: none !important; }
+.landing-motion .pixel-window { transform-origin: center; animation: desktop-power-on .68s steps(8, end) both; }
+.landing-motion .desktop-boot {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 6vw, 58px);
+  overflow: hidden;
+  color: var(--paper-soft);
+  background: #081421;
+  animation: boot-screen-out .28s steps(4, end) 2.48s forwards;
+}
+.landing-motion .desktop-boot::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: .22;
+  background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(224, 225, 221, .18) 3px 4px);
+  animation: boot-interference .18s steps(2, end) 6;
+}
+.boot-copy { position: relative; z-index: 1; font-size: clamp(.48rem, .8vw, .66rem); letter-spacing: .03em; }
+.boot-copy p { margin: 0 0 10px; opacity: 1; }
+.boot-copy p span { color: var(--mist); }
+.landing-motion .boot-copy p:nth-child(1) { animation: boot-line-in .08s steps(1, end) .72s both; }
+.landing-motion .boot-copy p:nth-child(2) { animation: boot-line-in .08s steps(1, end) 1.05s both; }
+.landing-motion .boot-copy p:nth-child(3) { animation: boot-line-in .08s steps(1, end) 1.38s both; }
+.landing-motion .boot-copy .boot-ready { margin-top: 22px; color: var(--paper); animation: boot-line-in .08s steps(1, end) 2.06s both; }
+.boot-cursor { display: inline-block; width: 7px; height: 1em; margin-left: 7px; vertical-align: -.16em; background: var(--paper); }
+.landing-motion .boot-cursor { animation: blink .42s steps(1, end) 2; }
+.boot-progress { position: relative; z-index: 1; width: min(240px, 72%); height: 7px; margin-top: 16px; border: 1px solid rgba(119, 141, 169, .55); opacity: 0; }
+.boot-progress span { display: block; width: 0; height: 100%; background: var(--mist); }
+.landing-motion .boot-progress { animation: boot-line-in .08s steps(1, end) 1.58s forwards; }
+.landing-motion .boot-progress span { animation: boot-progress 540ms steps(9, end) 1.62s forwards; }
+.landing-motion .desktop-icons,
+.landing-motion .desktop-note,
+.landing-motion .taskbar { opacity: 0; }
+.landing-motion.landing-ready .desktop-icons { animation: desktop-item-in .38s steps(5, end) forwards; }
+.landing-motion.landing-ready .desktop-note { animation: desktop-item-in .42s steps(5, end) .14s forwards; }
+.landing-motion.landing-ready .taskbar { animation: taskbar-in .3s steps(5, end) .06s forwards; }
 .desktop-icons { position: absolute; z-index: 2; top: 32px; left: 30px; display: flex; flex-direction: column; gap: 25px; }
 .desktop-icon { display: grid; grid-template-columns: 40px auto; gap: 12px; align-items: center; width: fit-content; padding: 7px 9px; color: var(--paper-soft); font-size: .66rem; text-shadow: 1px 1px 0 var(--ink); transition: color 120ms ease, background 120ms ease; }
 .desktop-icon:hover, .desktop-icon:focus-visible { color: white; background: rgba(119, 141, 169, .24); outline: 1px solid rgba(224, 225, 221, .42); outline-offset: 0; }
@@ -305,6 +348,38 @@ h1 {
   79% { opacity: .97; transform: scale(1.012) translateX(1px); }
 }
 @keyframes blink { 50% { opacity: 0; } }
+@keyframes desktop-power-on {
+  0% { opacity: 0; filter: brightness(3); transform: scaleX(.02) scaleY(.012); }
+  34% { opacity: 1; filter: brightness(2.2); transform: scaleX(1) scaleY(.018); }
+  58% { filter: brightness(1.5); transform: scaleX(1) scaleY(1); }
+  76% { filter: brightness(.72); transform: scaleX(1.006) scaleY(.985); }
+  100% { opacity: 1; filter: brightness(1); transform: scale(1); }
+}
+@keyframes boot-interference {
+  0% { opacity: .08; transform: translateY(-2px); }
+  50% { opacity: .34; transform: translateY(2px); }
+  100% { opacity: .18; transform: translateY(0); }
+}
+@keyframes boot-line-in {
+  from { opacity: 0; transform: translateX(-7px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes boot-progress { to { width: 100%; } }
+@keyframes boot-screen-out {
+  0% { opacity: 1; filter: brightness(1); transform: scaleY(1); }
+  55% { opacity: 1; filter: brightness(2.4); transform: scaleY(.018); }
+  100% { opacity: 0; filter: brightness(3); transform: scaleX(.02) scaleY(.012); }
+}
+@keyframes desktop-item-in {
+  0% { opacity: 0; filter: brightness(1.8); transform: translateY(8px); }
+  35% { opacity: .45; }
+  52% { opacity: .18; transform: translateY(3px); }
+  100% { opacity: 1; filter: brightness(1); transform: translateY(0); }
+}
+@keyframes taskbar-in {
+  from { opacity: 0; transform: translateY(100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
 @keyframes record-boot {
   0% { opacity: 0; filter: brightness(.55); transform: translateY(20px); }
   28% { opacity: .35; filter: brightness(1.35); transform: translateY(13px); }

@@ -3,6 +3,7 @@ const nav = document.querySelector("[data-nav]");
 const header = document.querySelector(".site-header");
 const year = document.querySelector("[data-year]");
 const taskbarTime = document.querySelector(".taskbar-time");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 menuButton?.addEventListener("click", () => {
   const isOpen = menuButton.getAttribute("aria-expanded") === "true";
@@ -36,10 +37,29 @@ if (taskbarTime) window.setInterval(updateTaskbarTime, 30_000);
 
 if (year) year.textContent = String(new Date().getFullYear());
 
+const landingDesktop = document.querySelector(".pixel-desktop");
+const desktopBoot = document.querySelector(".desktop-boot");
+
+if (landingDesktop && desktopBoot && !reduceMotion.matches) {
+  document.documentElement.classList.add("landing-motion");
+
+  const finishDesktopBoot = () => {
+    document.documentElement.classList.add("landing-ready");
+    desktopBoot.hidden = true;
+
+    window.setTimeout(() => {
+      document.documentElement.classList.remove("landing-motion", "landing-ready");
+    }, 800);
+  };
+
+  window.setTimeout(finishDesktopBoot, 2850);
+} else if (desktopBoot) {
+  desktopBoot.hidden = true;
+}
+
 const experienceList = document.querySelector(".experience-list");
 const experienceRecords = document.querySelectorAll(".experience-record");
 const activityCards = document.querySelectorAll(".activity-card");
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 if (experienceList) {
   const revealTargets = [...experienceRecords, ...activityCards];
