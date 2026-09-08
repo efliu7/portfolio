@@ -35,3 +35,79 @@ updateTaskbarTime();
 if (taskbarTime) window.setInterval(updateTaskbarTime, 30_000);
 
 if (year) year.textContent = String(new Date().getFullYear());
+
+const experienceList = document.querySelector(".experience-list");
+const experienceRecords = document.querySelectorAll(".experience-record");
+const activityCards = document.querySelectorAll(".activity-card");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (experienceList) {
+  const revealTargets = [...experienceRecords, ...activityCards];
+
+  if (reduceMotion.matches || !("IntersectionObserver" in window)) {
+    revealTargets.forEach((target) => target.classList.add("is-visible"));
+    experienceList.style.setProperty("--timeline-progress", "100%");
+  } else {
+    document.documentElement.classList.add("experience-motion");
+
+    const animateMetric = (metric) => {
+      if (metric.dataset.counted === "true") return;
+
+      const finalValue = metric.textContent.trim();
+      const match = finalValue.match(/^(\D*)(\d+)(.*)$/);
+      if (!match) return;
+
+      const [, prefix, number, suffix] = match;
+      const target = Number(number);
+      const duration = 850;
+      const startedAt = performance.now();
+
+      metric.dataset.counted = "true";
+      metric.setAttribute("aria-label", finalValue);
+
+      const tick = (now) => {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        metric.textContent = `${prefix}${Math.round(target * eased)}${suffix}`;
+
+        if (progress < 1) requestAnimationFrame(tick);
+        else metric.textContent = finalValue;
+      };
+
+      requestAnimationFrame(tick);
+    };
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add("is-visible");
+          entry.target.querySelectorAll(".role-metrics dd").forEach(animateMetric);
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8%" },
+    );
+
+    revealTargets.forEach((target) => revealObserver.observe(target));
+
+    let timelineFrame;
+    const updateTimeline = () => {
+      timelineFrame = undefined;
+      const bounds = experienceList.getBoundingClientRect();
+      const activeLine = window.innerHeight * 0.62;
+      const progress = Math.min(Math.max((activeLine - bounds.top) / bounds.height, 0), 1);
+      experienceList.style.setProperty("--timeline-progress", `${progress * 100}%`);
+    };
+
+    const requestTimelineUpdate = () => {
+      if (timelineFrame) return;
+      timelineFrame = requestAnimationFrame(updateTimeline);
+    };
+
+    updateTimeline();
+    window.addEventListener("scroll", requestTimelineUpdate, { passive: true });
+    window.addEventListener("resize", requestTimelineUpdate);
+  }
+}
