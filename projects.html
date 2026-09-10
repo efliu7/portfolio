@@ -15,16 +15,96 @@
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span class="sr-only">Toggle navigation</span><span aria-hidden="true">menu</span></button>
       <nav class="site-nav" id="site-nav" aria-label="Main navigation" data-nav><a href="index.html">Home</a><a class="is-current" href="projects.html" aria-current="page">Projects</a><a href="experience.html">Experience</a><a href="about.html">About</a><a href="https://drive.google.com/file/d/12K8Z2sb5uFqbBXeucd8AHHMx-eDDHIYc/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a></nav>
     </header>
-    <main class="page-shell">
+    <main class="projects-page" id="main">
       <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Directory / projects</p>
-      <h1 class="ascii-heading ascii-heading-wide" aria-label="Projects"><span aria-hidden="true">██████╗ ██████╗  ██████╗      ██╗███████╗ ██████╗████████╗███████╗
+      <h1 class="ascii-heading ascii-heading-wide" id="projects-title" aria-label="Projects"><span aria-hidden="true">██████╗ ██████╗  ██████╗      ██╗███████╗ ██████╗████████╗███████╗
 ██╔══██╗██╔══██╗██╔═══██╗     ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝
 ██████╔╝██████╔╝██║   ██║     ██║█████╗  ██║        ██║   ███████╗
 ██╔═══╝ ██╔══██╗██║   ██║██   ██║██╔══╝  ██║        ██║   ╚════██║
 ██║     ██║  ██║╚██████╔╝╚█████╔╝███████╗╚██████╗   ██║   ███████║
 ╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝</span></h1>
-      <p>This page is queued up next.</p>
-      <a class="text-link" href="index.html">← Return to desktop</a>
+      <p class="projects-lede">A selection of products, experiments, and team builds. Choose a file to inspect the project.</p>
+
+      <section class="project-browser" aria-labelledby="projects-title" data-project-browser>
+        <div class="project-browser-bar"><span>project_explorer</span><div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div></div>
+        <div class="project-address-bar" aria-hidden="true"><span>C:</span><span>portfolio</span><span>projects</span><span class="project-address-cursor"></span></div>
+
+        <div class="project-browser-layout">
+          <aside class="project-directory" aria-label="Project files">
+            <div class="directory-heading"><span>5 records</span><span>select one</span></div>
+            <div class="project-tabs" role="tablist" aria-orientation="vertical">
+              <button class="project-file is-selected" id="project-tab-traint" type="button" role="tab" aria-selected="true" aria-controls="project-traint" tabindex="0" data-project-target="project-traint"><span class="project-file-icon" aria-hidden="true"></span><span class="project-file-copy"><strong>traint.ai</strong><small>AI platform / 2024</small></span><span class="project-file-index">01</span></button>
+              <button class="project-file" id="project-tab-devcircle" type="button" role="tab" aria-selected="false" aria-controls="project-devcircle" tabindex="-1" data-project-target="project-devcircle"><span class="project-file-icon" aria-hidden="true"></span><span class="project-file-copy"><strong>devcircle.app</strong><small>Social platform / 2024</small></span><span class="project-file-index">02</span></button>
+              <button class="project-file" id="project-tab-inclusee" type="button" role="tab" aria-selected="false" aria-controls="project-inclusee" tabindex="-1" data-project-target="project-inclusee"><span class="project-file-icon" aria-hidden="true"></span><span class="project-file-copy"><strong>inclusee.addon</strong><small>Accessibility / 2025</small></span><span class="project-file-index">03</span></button>
+              <button class="project-file" id="project-tab-knight" type="button" role="tab" aria-selected="false" aria-controls="project-knight" tabindex="-1" data-project-target="project-knight"><span class="project-file-icon" aria-hidden="true"></span><span class="project-file-copy"><strong>knight_quest.game</strong><small>Action RPG / 2024</small></span><span class="project-file-index">04</span></button>
+              <button class="project-file" id="project-tab-jet" type="button" role="tab" aria-selected="false" aria-controls="project-jet" tabindex="-1" data-project-target="project-jet"><span class="project-file-icon" aria-hidden="true"></span><span class="project-file-copy"><strong>jam_website.web</strong><small>Nonprofit site / 2025</small></span><span class="project-file-index">05</span></button>
+            </div>
+          </aside>
+
+          <div class="project-inspector" aria-live="polite">
+            <article class="project-panel project-panel--traint" id="project-traint" role="tabpanel" aria-labelledby="project-tab-traint" tabindex="0">
+              <div class="project-visual" aria-hidden="true"><div class="project-visual-grid"></div><span class="visual-kicker">TRAINING SESSION / ACTIVE</span><strong>traint</strong><div class="visual-signal"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="visual-readout">SENTIMENT 084 // FEEDBACK READY</span></div>
+              <div class="project-panel-body">
+                <header class="project-heading"><div><p class="project-type">Hackathon winner / AI</p><h2>traint</h2></div><span class="project-state project-state--winner">2x winner</span></header>
+                <p class="project-summary">An AI-powered training platform for customer support and sales teams, built in 32 hours at Hack the North 2024.</p>
+                <dl class="project-meta"><div><dt>Role</dt><dd>Full-stack + AI</dd></div><div><dt>Team</dt><dd>4 builders</dd></div><div><dt>Year</dt><dd>2024</dd></div></dl>
+                <div class="project-notes"><div><span>01 / Problem</span><p>Traditional agent training lacks realistic practice and actionable feedback.</p></div><div><span>02 / Build</span><p>Created adaptive customer personas, live sentiment scoring, transcript analysis, and next-step coaching using Genesys, Voiceflow, and Groq.</p></div><div><span>03 / Result</span><p>Won the Genesys challenge and the Voiceflow non-chatbot AI agent prize at Canada’s biggest hackathon.</p></div></div>
+                <ul class="project-stack" aria-label="Technologies"><li>Next.js</li><li>React</li><li>Groq</li><li>Genesys</li><li>Voiceflow</li></ul>
+                <div class="project-links"><a href="https://devpost.com/software/traint" target="_blank" rel="noreferrer">View case study <span aria-hidden="true">↗</span></a><a href="https://github.com/efliu7/hackthenorth2024" target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </article>
+
+            <article class="project-panel project-panel--devcircle" id="project-devcircle" role="tabpanel" aria-labelledby="project-tab-devcircle" tabindex="0" hidden>
+              <div class="project-visual" aria-hidden="true"><div class="project-visual-grid"></div><span class="visual-kicker">COMMUNITY FEED / 24 POSTS</span><strong>devCircle</strong><div class="visual-posts"><i></i><i></i><i></i></div><span class="visual-readout">SEARCH INDEX ONLINE // REALTIME SYNC</span></div>
+              <div class="project-panel-body">
+                <header class="project-heading"><div><p class="project-type">Full-stack web platform</p><h2>devCircle</h2></div><span class="project-state">Shipped</span></header>
+                <p class="project-summary">A community platform designed for students to share side projects, receive peer feedback, and discover what other builders are creating.</p>
+                <dl class="project-meta"><div><dt>Role</dt><dd>Full-stack developer</dd></div><div><dt>Platform</dt><dd>Responsive web</dd></div><div><dt>Year</dt><dd>2024</dd></div></dl>
+                <div class="project-notes"><div><span>01 / Product</span><p>Combined project publishing, profiles, likes, tags, technology filters, drafts, and structured suggestions in one student-focused community.</p></div><div><span>02 / Engineering</span><p>Implemented authenticated realtime CRUD with Firebase, GitHub repository linking, image uploads, and server-rendered project pages.</p></div><div><span>03 / Discovery</span><p>Added Algolia-powered search across titles, tags, and technologies, with mobile-adaptive browsing and SEO support.</p></div></div>
+                <ul class="project-stack" aria-label="Technologies"><li>Next.js</li><li>React</li><li>Firebase</li><li>Algolia</li><li>Tailwind</li></ul>
+                <div class="project-links"><a href="https://www.devcircle.co/" target="_blank" rel="noreferrer">Open site <span aria-hidden="true">↗</span></a><a href="https://github.com/efliu7/dev-circle" target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </article>
+
+            <article class="project-panel project-panel--inclusee" id="project-inclusee" role="tabpanel" aria-labelledby="project-tab-inclusee" tabindex="0" hidden>
+              <div class="project-visual" aria-hidden="true"><div class="project-visual-grid"></div><span class="visual-kicker">CONTRAST ANALYZER / DOCUMENT 01</span><strong>Inclusee</strong><div class="visual-contrast"><i></i><i></i><span>AA PASS<br />7.21 : 1</span></div><span class="visual-readout">ACCESSIBILITY CHECK COMPLETE</span></div>
+              <div class="project-panel-body">
+                <header class="project-heading"><div><p class="project-type">Creative Cloud accessibility tool</p><h2>Inclusee</h2></div><span class="project-state">Prototype</span></header>
+                <p class="project-summary">An Adobe Creative Cloud add-on that helps designers identify inaccessible colour combinations before publishing their work.</p>
+                <dl class="project-meta"><div><dt>Role</dt><dd>Frontend developer</dd></div><div><dt>Focus</dt><dd>Accessibility</dd></div><div><dt>Year</dt><dd>2025</dd></div></dl>
+                <div class="project-notes"><div><span>01 / Analysis</span><p>Scans document colours and calculates contrast ratios against WCAG AA readability thresholds.</p></div><div><span>02 / Guidance</span><p>Explains passing and failing combinations, then generates contrasting monochromatic alternatives for selected colours.</p></div><div><span>03 / Workflow</span><p>Runs inside Creative Cloud and supports copying recommended colour values without leaving the design environment.</p></div></div>
+                <ul class="project-stack" aria-label="Technologies"><li>React</li><li>JavaScript</li><li>Adobe SDK</li><li>Spectrum</li><li>WCAG</li></ul>
+                <div class="project-links"><a href="https://github.com/efliu7/Inclusee" target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </article>
+
+            <article class="project-panel project-panel--knight" id="project-knight" role="tabpanel" aria-labelledby="project-tab-knight" tabindex="0" hidden>
+              <div class="project-visual" aria-hidden="true"><div class="project-visual-grid"></div><span class="visual-kicker">BOSS ENCOUNTER / PHASE 03</span><strong>Knight Quest</strong><div class="visual-health"><span></span></div><span class="visual-readout">DODGE // PARRY // SURVIVE</span></div>
+              <div class="project-panel-body">
+                <header class="project-heading"><div><p class="project-type">Course project / Game development</p><h2>Knight Quest</h2></div><span class="project-state">Complete</span></header>
+                <p class="project-summary">A team-built souls-like action RPG focused on deliberate combat, character progression, and challenging multi-phase encounters.</p>
+                <dl class="project-meta"><div><dt>Role</dt><dd>Game developer</dd></div><div><dt>Team</dt><dd>5 builders</dd></div><div><dt>Year</dt><dd>2024</dd></div></dl>
+                <div class="project-notes"><div><span>01 / Combat</span><p>Built around responsive movement with dodging, rolling, parrying, and weapons supporting different play styles.</p></div><div><span>02 / Systems</span><p>Combined character customization, inventory management, unique boss weapons, dialogue, and an explorable medieval map.</p></div><div><span>03 / Encounters</span><p>Designed three bosses with distinct attack patterns and escalating phases to test player mastery.</p></div></div>
+                <ul class="project-stack" aria-label="Project areas"><li>Game systems</li><li>Combat design</li><li>Team project</li><li>OOP</li></ul>
+              </div>
+            </article>
+
+            <article class="project-panel project-panel--jet" id="project-jet" role="tabpanel" aria-labelledby="project-tab-jet" tabindex="0" hidden>
+              <div class="project-visual" aria-hidden="true"><div class="project-visual-grid"></div><span class="visual-kicker">JAM ARCHIVE / FLIGHT STATUS</span><strong>Jet Aircraft Museum</strong><div class="visual-radar"><i></i><span></span></div><span class="visual-readout">PRESERVING CANADIAN AVIATION HISTORY</span></div>
+              <div class="project-panel-body">
+                <header class="project-heading"><div><p class="project-type">Nonprofit website modernization</p><h2>Jet Aircraft Museum</h2></div><span class="project-state">Live</span></header>
+                <p class="project-summary">A major website overhaul for London’s Jet Aircraft Museum, delivered through Western Tech for Social Impact.</p>
+                <dl class="project-meta"><div><dt>Role</dt><dd>Project manager</dd></div><div><dt>Client</dt><dd>Nonprofit museum</dd></div><div><dt>Year</dt><dd>2025</dd></div></dl>
+                <div class="project-notes"><div><span>01 / Goal</span><p>Modernized the museum’s digital presence so visitors can explore aircraft, restorations, events, flight experiences, and ways to support the organization.</p></div><div><span>02 / Delivery</span><p>Coordinated a Western student team and translated stakeholder needs into responsive pages and clearer visitor journeys.</p></div><div><span>03 / Foundation</span><p>Delivered pages integrated into the museum’s development, test, and production environment, creating a base for future features.</p></div></div>
+                <ul class="project-stack" aria-label="Project areas"><li>Next.js</li><li>Responsive UI</li><li>Client delivery</li><li>Project management</li></ul>
+                <div class="project-links"><a href="https://jetaircraftmuseum.netlify.app/" target="_blank" rel="noreferrer">Open site <span aria-hidden="true">↗</span></a></div>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <div class="project-browser-status" aria-hidden="true"><span>READY</span><span data-project-status>01 / TRAINT.AI</span><span>5 OBJECTS</span></div>
+      </section>
     </main>
   </body>
 </html>
