@@ -96,6 +96,56 @@ if (hobbyCards.length && !reduceMotion.matches && "IntersectionObserver" in wind
   hobbyCards.forEach((card) => card.classList.add("is-visible"));
 }
 
+const projectBrowser = document.querySelector("[data-project-browser]");
+
+if (projectBrowser) {
+  const projectTabs = [...projectBrowser.querySelectorAll("[data-project-target]")];
+  const projectPanels = [...projectBrowser.querySelectorAll("[role='tabpanel']")];
+  const projectStatus = projectBrowser.querySelector("[data-project-status]");
+
+  const selectProject = (selectedTab, moveFocus = false) => {
+    const selectedPanel = projectPanels.find((panel) => panel.id === selectedTab.dataset.projectTarget);
+    if (!selectedPanel) return;
+
+    projectTabs.forEach((tab) => {
+      const isSelected = tab === selectedTab;
+      tab.classList.toggle("is-selected", isSelected);
+      tab.setAttribute("aria-selected", String(isSelected));
+      tab.tabIndex = isSelected ? 0 : -1;
+    });
+
+    projectPanels.forEach((panel) => {
+      panel.hidden = panel !== selectedPanel;
+      panel.classList.remove("is-loading");
+    });
+
+    if (!reduceMotion.matches) {
+      requestAnimationFrame(() => selectedPanel.classList.add("is-loading"));
+    }
+
+    const selectedIndex = projectTabs.indexOf(selectedTab) + 1;
+    const selectedName = selectedTab.querySelector("strong")?.textContent ?? "project";
+    if (projectStatus) projectStatus.textContent = `${String(selectedIndex).padStart(2, "0")} / ${selectedName.toUpperCase()}`;
+
+    if (moveFocus) selectedTab.focus();
+  };
+
+  projectTabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => selectProject(tab));
+    tab.addEventListener("keydown", (event) => {
+      let nextIndex;
+      if (event.key === "ArrowDown" || event.key === "ArrowRight") nextIndex = (index + 1) % projectTabs.length;
+      if (event.key === "ArrowUp" || event.key === "ArrowLeft") nextIndex = (index - 1 + projectTabs.length) % projectTabs.length;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = projectTabs.length - 1;
+      if (nextIndex === undefined) return;
+
+      event.preventDefault();
+      selectProject(projectTabs[nextIndex], true);
+    });
+  });
+}
+
 const experienceList = document.querySelector(".experience-list");
 const experienceRecords = document.querySelectorAll(".experience-record");
 const activityCards = document.querySelectorAll(".activity-card");
