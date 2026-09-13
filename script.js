@@ -97,6 +97,24 @@ if (hobbyCards.length && !reduceMotion.matches && "IntersectionObserver" in wind
 }
 
 const projectBrowser = document.querySelector("[data-project-browser]");
+const projectBoot = document.querySelector(".project-boot");
+
+if (projectBrowser && projectBoot && !reduceMotion.matches) {
+  document.documentElement.classList.add("projects-motion");
+
+  const finishProjectBoot = () => {
+    document.documentElement.classList.add("projects-ready");
+    projectBoot.hidden = true;
+
+    window.setTimeout(() => {
+      document.documentElement.classList.remove("projects-motion", "projects-ready");
+    }, 850);
+  };
+
+  window.setTimeout(finishProjectBoot, 2850);
+} else if (projectBoot) {
+  projectBoot.hidden = true;
+}
 
 if (projectBrowser) {
   const projectTabs = [...projectBrowser.querySelectorAll("[data-project-target]")];

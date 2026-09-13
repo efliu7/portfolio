@@ -189,8 +189,49 @@ h1 {
 .projects-page { width: var(--page); min-height: 100vh; margin: 0 auto; padding: 145px 0 120px; }
 .projects-page > h1 { margin-bottom: 28px; }
 .projects-lede { max-width: 600px; margin: 20px 0 clamp(48px, 6vw, 72px); color: var(--mist); font-family: var(--pixel); font-size: .68rem; }
-.project-browser { overflow: hidden; border: 1px solid rgba(119, 141, 169, .64); background: rgba(13, 27, 42, .74); box-shadow: 15px 15px 0 rgba(27, 38, 59, .66); font-family: var(--pixel); }
+.project-browser { position: relative; overflow: hidden; border: 1px solid rgba(119, 141, 169, .64); background: rgba(13, 27, 42, .74); box-shadow: 15px 15px 0 rgba(27, 38, 59, .66); font-family: var(--pixel); }
 .project-browser-bar { display: flex; min-height: 37px; align-items: center; justify-content: space-between; padding: 0 13px 0 18px; color: var(--ink); background: var(--mist); font-size: .55rem; letter-spacing: .05em; text-transform: uppercase; }
+.project-boot { display: none; }
+.project-boot[hidden] { display: none !important; }
+.projects-motion .project-browser { transform-origin: center top; animation: desktop-power-on .68s steps(8, end) both; }
+.projects-motion .project-boot {
+  position: absolute;
+  z-index: 12;
+  top: 37px;
+  right: 0;
+  bottom: 30px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(28px, 7vw, 78px);
+  overflow: hidden;
+  color: var(--paper-soft);
+  background: #081421;
+  animation: boot-screen-out .28s steps(4, end) 2.48s forwards;
+}
+.projects-motion .project-boot::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: .22;
+  background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(224, 225, 221, .18) 3px 4px);
+  animation: boot-interference .18s steps(2, end) 6;
+}
+.project-boot-copy { max-width: 510px; }
+.projects-motion .project-boot-copy p:nth-child(1) { animation: boot-line-in .08s steps(1, end) .72s both; }
+.projects-motion .project-boot-copy p:nth-child(2) { animation: boot-line-in .08s steps(1, end) 1.05s both; }
+.projects-motion .project-boot-copy p:nth-child(3) { animation: boot-line-in .08s steps(1, end) 1.38s both; }
+.projects-motion .project-boot-copy .boot-ready { margin-top: 22px; color: var(--paper); animation: boot-line-in .08s steps(1, end) 2.06s both; }
+.projects-motion .project-boot .boot-cursor { animation: blink .42s steps(1, end) 2; }
+.projects-motion .project-boot .boot-progress { animation: boot-line-in .08s steps(1, end) 1.58s forwards; }
+.projects-motion .project-boot .boot-progress span { animation: boot-progress 540ms steps(9, end) 1.62s forwards; }
+.projects-motion .project-address-bar,
+.projects-motion .project-browser-layout,
+.projects-motion .project-browser-status { pointer-events: none; opacity: 0; }
+.projects-motion.projects-ready .project-address-bar { animation: desktop-item-in .3s steps(5, end) forwards; }
+.projects-motion.projects-ready .project-browser-layout { pointer-events: auto; animation: desktop-item-in .42s steps(5, end) .1s forwards; }
+.projects-motion.projects-ready .project-browser-status { animation: taskbar-in .3s steps(5, end) .18s forwards; }
 .project-address-bar { display: flex; min-height: 34px; align-items: center; gap: 8px; padding: 0 15px; border-bottom: 1px solid rgba(119, 141, 169, .34); color: var(--mist); background: rgba(27, 38, 59, .84); font-size: .48rem; }
 .project-address-bar span:not(:last-child)::after { margin-left: 8px; color: rgba(224, 225, 221, .35); content: ">"; }
 .project-address-cursor { width: 6px; height: 11px; background: var(--mist); animation: blink 1.2s steps(2, start) infinite; }
