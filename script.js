@@ -120,6 +120,7 @@ if (projectBrowser) {
   const projectTabs = [...projectBrowser.querySelectorAll("[data-project-target]")];
   const projectPanels = [...projectBrowser.querySelectorAll("[role='tabpanel']")];
   const projectStatus = projectBrowser.querySelector("[data-project-status]");
+  const projectPath = projectBrowser.querySelector("[data-project-path]");
 
   const selectProject = (selectedTab, moveFocus = false) => {
     const selectedPanel = projectPanels.find((panel) => panel.id === selectedTab.dataset.projectTarget);
@@ -144,6 +145,7 @@ if (projectBrowser) {
     const selectedIndex = projectTabs.indexOf(selectedTab) + 1;
     const selectedName = selectedTab.querySelector("strong")?.textContent ?? "project";
     if (projectStatus) projectStatus.textContent = `${String(selectedIndex).padStart(2, "0")} / ${selectedName.toUpperCase()}`;
+    if (projectPath) projectPath.textContent = selectedName;
 
     if (moveFocus) selectedTab.focus();
   };
@@ -160,6 +162,44 @@ if (projectBrowser) {
 
       event.preventDefault();
       selectProject(projectTabs[nextIndex], true);
+    });
+  });
+
+  projectBrowser.querySelectorAll(".project-shot-list button[data-media-src]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (button.getAttribute("aria-pressed") === "true") return;
+
+      const showcase = button.closest(".project-showcase");
+      const frame = showcase?.querySelector(".project-media-frame");
+      const image = frame?.querySelector("img");
+      const caption = frame?.querySelector("figcaption");
+      const slot = showcase?.querySelector(".project-showcase-bar span:last-child");
+      const mediaSrc = button.dataset.mediaSrc;
+      if (!showcase || !frame || !image || !caption || !mediaSrc) return;
+
+      showcase.querySelectorAll(".project-shot-list button").forEach((option) => {
+        const isSelected = option === button;
+        option.classList.toggle("is-selected", isSelected);
+        option.setAttribute("aria-pressed", String(isSelected));
+      });
+
+      const loadSelectedImage = () => {
+        image.src = mediaSrc;
+        image.alt = button.dataset.mediaAlt ?? "Project screenshot";
+        caption.textContent = button.dataset.mediaCaption ?? "";
+        if (slot) slot.textContent = `slot ${String([...button.parentElement.children].indexOf(button) + 1).padStart(2, "0")}`;
+
+        if (!reduceMotion.matches) {
+          window.setTimeout(() => frame.classList.remove("is-switching"), 120);
+        }
+      };
+
+      if (reduceMotion.matches) loadSelectedImage();
+      else {
+        window.clearTimeout(Number(frame.dataset.mediaSwapTimer));
+        frame.classList.add("is-switching");
+        frame.dataset.mediaSwapTimer = String(window.setTimeout(loadSelectedImage, 80));
+      }
     });
   });
 }
