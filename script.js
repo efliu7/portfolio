@@ -183,6 +183,8 @@ if (projectBrowser) {
         option.setAttribute("aria-pressed", String(isSelected));
       });
 
+      button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "nearest" });
+
       const loadSelectedImage = () => {
         image.src = mediaSrc;
         image.alt = button.dataset.mediaAlt ?? "Project screenshot";

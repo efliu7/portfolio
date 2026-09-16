@@ -343,8 +343,11 @@ h1 {
 .project-media-placeholder strong { color: var(--paper); font-size: .57rem; font-weight: 400; letter-spacing: .06em; text-transform: uppercase; }
 .project-media-placeholder small { margin-top: 8px; color: var(--mist); font-size: .43rem; }
 .project-media-frame figcaption { position: absolute; z-index: 4; right: 0; bottom: 0; left: 0; padding: 8px 11px; color: var(--paper-soft); background: rgba(13, 27, 42, .86); font-size: .43rem; line-height: 1.5; }
-.project-shot-list { display: grid; grid-template-columns: repeat(3, 1fr); }
-.project-shot-list > * { min-width: 0; padding: 9px 10px; overflow: hidden; border: 0; color: var(--mist); background: transparent; font: inherit; font-size: .41rem; letter-spacing: .04em; text-align: left; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
+.project-shot-list { display: flex; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x proximity; scrollbar-color: var(--project-accent) rgba(119, 141, 169, .12); scrollbar-width: thin; }
+.project-shot-list::-webkit-scrollbar { height: 4px; }
+.project-shot-list::-webkit-scrollbar-track { background: rgba(119, 141, 169, .12); }
+.project-shot-list::-webkit-scrollbar-thumb { background: var(--project-accent); }
+.project-shot-list > * { flex: 1 0 145px; min-width: 0; padding: 9px 10px; overflow: hidden; border: 0; color: var(--mist); background: transparent; font: inherit; font-size: .41rem; letter-spacing: .04em; scroll-snap-align: start; text-align: left; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .project-shot-list > * + * { border-left: 1px solid rgba(119, 141, 169, .24); }
 .project-shot-list button { cursor: pointer; }
 .project-shot-list button:hover,
