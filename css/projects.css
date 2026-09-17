@@ -166,7 +166,6 @@
 .project-shot-list::-webkit-scrollbar-thumb { background: var(--project-accent); }
 .project-shot-list > * { flex: 1 0 145px; min-width: 0; padding: 9px 10px; overflow: hidden; border: 0; color: var(--mist); background: transparent; font: inherit; font-size: .41rem; letter-spacing: .04em; scroll-snap-align: start; text-align: left; text-overflow: ellipsis; text-transform: uppercase; white-space: nowrap; }
 .project-shot-list > * + * { border-left: 1px solid rgba(119, 141, 169, .24); }
-.project-shot-list button { cursor: pointer; }
 .project-shot-list button:hover,
 .project-shot-list button:focus-visible,
 .project-shot-list button.is-selected { color: var(--paper); background: color-mix(in srgb, var(--project-accent) 15%, transparent); }

@@ -45,8 +45,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--paper); outline
   input[type="reset"],
   input[type="checkbox"],
   input[type="radio"],
-  [role="button"],
-  [tabindex]:not([tabindex="-1"]) { cursor: url("../assets/cursor-pointer.svg") 8 1, pointer; }
+  [role="button"] { cursor: url("../assets/cursor-pointer.svg") 8 1, pointer; }
 }
 
 .site-header {
