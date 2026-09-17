@@ -1,0 +1,113 @@
+/* About page, call window, and hobbies. */
+
+.about-page { display: flex; flex-direction: column; gap: clamp(100px, 12vw, 160px); width: var(--page); min-height: 100vh; margin: 0 auto; padding: 130px 0 120px; }
+.about-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(390px, .7fr); gap: clamp(54px, 8vw, 120px); align-items: center; width: 100%; }
+.about-copy { max-width: 680px; }
+.about-copy h1 { margin-bottom: 38px; }
+.about-prose { display: grid; gap: 21px; max-width: 630px; font-family: var(--pixel); }
+.about-note { padding: 3px 0 3px 17px; border-left: 1px solid rgba(119, 141, 169, .42); }
+.about-note-label { display: block; margin-bottom: 7px; color: var(--mist); font-size: .55rem; letter-spacing: .08em; text-transform: uppercase; }
+.about-prose p { margin: 0; color: var(--paper-soft); font-size: clamp(.82rem, 1.15vw, .92rem); line-height: 1.72; }
+.about-note:first-child { border-left-color: var(--paper-soft); }
+.about-note:first-child p { color: var(--paper); font-size: clamp(.9rem, 1.3vw, 1rem); }
+.about-prose strong { color: var(--paper); font-weight: 400; }
+.about-prose em { color: var(--paper); font-style: normal; }
+.about-actions { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 34px; }
+
+.call-window { position: relative; width: 100%; margin: 0; border: 1px solid var(--mist); background: var(--navy); box-shadow: 16px 16px 0 rgba(27, 38, 59, .85); font-family: var(--pixel); image-rendering: pixelated; }
+.call-titlebar { display: flex; align-items: center; justify-content: space-between; min-height: 38px; padding: 0 12px; color: var(--ink); background: var(--mist); font-size: .58rem; letter-spacing: .04em; text-transform: uppercase; }
+.call-window-controls { display: flex; gap: 6px; }
+.call-quality { display: flex; justify-self: end; align-items: end; gap: 2px; height: 12px; }
+.call-quality i { display: block; width: 3px; background: var(--ink); }
+.call-quality i:nth-child(1) { height: 4px; }
+.call-quality i:nth-child(2) { height: 8px; }
+.call-quality i:nth-child(3) { height: 12px; }
+.call-screen { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border: 12px solid var(--navy); border-radius: 7px / 12px; background: #14283e; }
+.call-connect { display: none; }
+.call-connect[hidden] { display: none !important; }
+.call-connecting .call-window { transform-origin: center; animation: call-power-on .58s steps(7, end) both; }
+.call-connecting .call-connect {
+  position: absolute;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(22px, 5vw, 42px);
+  overflow: hidden;
+  color: var(--paper-soft);
+  background: #081421;
+  animation: call-connect-out .24s steps(4, end) 2.26s forwards;
+}
+.call-connecting .call-connect::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: .22;
+  background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(224, 225, 221, .18) 3px 4px);
+  animation: boot-interference .18s steps(2, end) 6;
+}
+.connect-heading, .connect-log, .connect-progress, .connect-status { position: relative; z-index: 1; }
+.connect-heading { margin: 0 0 24px; color: var(--paper); font-size: clamp(.54rem, .9vw, .68rem); letter-spacing: .08em; text-transform: uppercase; }
+.connect-log p { margin: 0 0 8px; opacity: 1; font-size: clamp(.45rem, .7vw, .58rem); }
+.connect-log p span { color: var(--mist); }
+.call-connecting .connect-log p:nth-child(1) { animation: boot-line-in .08s steps(1, end) .66s both; }
+.call-connecting .connect-log p:nth-child(2) { animation: boot-line-in .08s steps(1, end) 1s both; }
+.call-connecting .connect-log p:nth-child(3) { animation: boot-line-in .08s steps(1, end) 1.34s both; }
+.connect-progress { width: 100%; height: 7px; margin-top: 18px; border: 1px solid rgba(119, 141, 169, .55); opacity: 0; }
+.connect-progress span { display: block; width: 0; height: 100%; background: var(--mist); }
+.call-connecting .connect-progress { animation: boot-line-in .08s steps(1, end) 1.5s forwards; }
+.call-connecting .connect-progress span { animation: boot-progress 600ms steps(10, end) 1.54s forwards; }
+.connect-status { margin: 10px 0 0; color: var(--mist); font-size: .48rem; letter-spacing: .06em; text-transform: uppercase; }
+.connect-dots { display: inline-block; width: 2.4em; overflow: hidden; vertical-align: bottom; animation: connect-dots .9s steps(4, end) infinite; }
+.call-connecting .profile-photo,
+.call-connecting .call-status,
+.call-connecting .call-nameplate,
+.call-connecting .call-toolbar,
+.call-connecting .call-window figcaption { opacity: 0; }
+.call-connecting.call-ready .profile-photo { animation: call-signal-lock .56s steps(7, end) forwards; }
+.call-connecting.call-ready .call-status,
+.call-connecting.call-ready .call-nameplate,
+.call-connecting.call-ready .call-toolbar,
+.call-connecting.call-ready .call-window figcaption { animation: desktop-item-in .34s steps(4, end) .18s forwards; }
+.call-screen::before { position: absolute; inset: 0; z-index: 2; pointer-events: none; content: ""; background: radial-gradient(ellipse at center, transparent 48%, rgba(13, 27, 42, .32) 76%, rgba(13, 27, 42, .82) 100%), repeating-linear-gradient(0deg, rgba(13, 27, 42, .08) 0 2px, rgba(13, 27, 42, .58) 2px 4px), repeating-linear-gradient(90deg, rgba(224, 225, 221, .035) 0 1px, rgba(119, 141, 169, .04) 1px 2px, rgba(13, 27, 42, .08) 2px 3px); animation: crt-raster-drift .9s linear infinite; }
+.call-screen::after { position: absolute; z-index: 2; top: -16%; right: 0; left: 0; height: 12%; pointer-events: none; content: ""; background: linear-gradient(to bottom, transparent 0, rgba(119, 141, 169, .08) 35%, rgba(224, 225, 221, .24) 52%, rgba(119, 141, 169, .1) 58%, transparent 100%); mix-blend-mode: screen; filter: blur(.4px); animation: crt-refresh-roll 4.2s linear infinite; }
+.profile-photo { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.72) contrast(1.16) brightness(.9); transform: scale(1.012); animation: crt-signal-flicker 6s steps(1, end) infinite; }
+.call-status { position: absolute; z-index: 3; top: 13px; right: 13px; display: flex; align-items: center; gap: 6px; padding: 5px 7px; color: var(--paper); background: rgba(13, 27, 42, .72); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; }
+.call-status span { width: 6px; height: 6px; background: #65c988; box-shadow: 0 0 0 3px rgba(101, 201, 136, .15); }
+.call-nameplate { position: absolute; z-index: 3; bottom: 13px; left: 13px; display: flex; flex-direction: column; padding: 7px 9px; background: rgba(13, 27, 42, .75); line-height: 1.35; }
+.call-nameplate strong { color: var(--paper); font-size: .6rem; font-weight: 400; }
+.call-nameplate span { color: var(--mist); font-size: .48rem; }
+.call-toolbar { display: flex; justify-content: center; gap: 9px; padding: 13px; border-top: 1px solid rgba(224, 225, 221, .12); }
+.call-button { display: grid; min-width: 42px; height: 25px; padding: 0 8px; place-items: center; border: 1px solid rgba(224, 225, 221, .2); color: var(--paper-soft); background: rgba(13, 27, 42, .45); font-size: .45rem; text-transform: uppercase; }
+.call-button svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: square; stroke-linejoin: miter; }
+.call-button-end { border-color: rgba(255, 95, 87, .52); color: #ff8a84; }
+.call-window figcaption { padding: 9px 12px; border-top: 1px solid rgba(224, 225, 221, .12); color: var(--mist); font-size: .48rem; letter-spacing: .04em; text-align: center; text-transform: uppercase; }
+
+.hobbies-section { width: 100%; padding-top: clamp(52px, 7vw, 88px); border-top: 1px solid var(--line); }
+.hobbies-heading { margin-bottom: 48px; }
+.hobbies-heading h2 { max-width: 720px; margin: 0; }
+.hobbies-heading > p:last-child { max-width: 420px; margin: 18px 0 0; color: var(--mist); font-family: var(--pixel); font-size: .68rem; }
+.hobby-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(18px, 2.5vw, 32px); }
+.hobby-card { position: relative; min-width: 0; overflow: hidden; border: 1px solid rgba(119, 141, 169, .42); background: rgba(27, 38, 59, .46); box-shadow: 8px 8px 0 rgba(27, 38, 59, .6); }
+.hobby-card::after { position: absolute; z-index: 4; top: 0; right: 0; left: 0; height: 18%; pointer-events: none; content: ""; opacity: 0; background: linear-gradient(to bottom, transparent, rgba(119, 141, 169, .24), rgba(224, 225, 221, .12), transparent); transform: translateY(-130%); }
+.hobby-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-bottom: 1px solid rgba(119, 141, 169, .42); background: #14283e; }
+.hobby-image::after { position: absolute; inset: 0; z-index: 2; pointer-events: none; content: ""; opacity: .12; background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(224, 225, 221, .18) 3px 4px); }
+.hobby-image > img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.82) contrast(1.04); }
+.hobby-index { position: absolute; z-index: 3; top: 10px; right: 10px; padding: 4px 7px; color: var(--paper); background: rgba(13, 27, 42, .74); font-family: var(--pixel); font-size: .5rem; }
+.hobby-card-copy { padding: 24px 24px 27px; }
+.hobby-card-copy h3 { margin: 0 0 10px; color: var(--paper); font-family: var(--pixel); font-size: .82rem; letter-spacing: .01em; }
+.hobby-card-copy p { margin: 0; color: var(--paper-soft); font-family: var(--pixel); font-size: .78rem; line-height: 1.7; }
+.hobby-card-copy em { color: var(--paper); font-style: normal; }
+.about-motion .hobby-card { opacity: 0; filter: brightness(.68); transform: translateY(20px); }
+.about-motion .hobby-card.is-visible { animation: record-boot .62s steps(7, end) forwards; }
+.about-motion .hobby-card:nth-child(2).is-visible { animation-delay: .09s; }
+.about-motion .hobby-card:nth-child(3).is-visible { animation-delay: .18s; }
+.about-motion .hobby-card.is-visible::after { animation: signal-sweep .66s ease-out .12s; }
+.about-motion .hobby-card.is-visible .hobby-index { animation: badge-stamp .38s steps(4, end) .34s both; }
+.about-motion .hobby-card.is-visible .hobby-image img { animation: hobby-signal-in .52s steps(6, end) .1s backwards; }
+@media (hover: hover) {
+  .hobby-card { transition: border-color 160ms ease, box-shadow 160ms ease; }
+  .hobby-card:hover { border-color: rgba(224, 225, 221, .55); box-shadow: 8px 8px 0 rgba(27, 38, 59, .6), inset 0 0 32px rgba(119, 141, 169, .08); }
+  .hobby-card:hover::after { animation: signal-sweep .66s ease-out; }
+}

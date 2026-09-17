@@ -1,0 +1,17 @@
+/* Shared retro window controls and boot-screen primitives. */
+
+.window-bar span,
+.note-bar span,
+.call-window-controls span {
+  width: 8px;
+  height: 8px;
+  border-radius: 0;
+  background: var(--ink);
+}
+
+.boot-copy { position: relative; z-index: 1; font-size: clamp(.48rem, .8vw, .66rem); letter-spacing: .03em; }
+.boot-copy p { margin: 0 0 10px; opacity: 1; }
+.boot-copy p span { color: var(--mist); }
+.boot-cursor { display: inline-block; width: 7px; height: 1em; margin-left: 7px; vertical-align: -.16em; background: var(--paper); }
+.boot-progress { position: relative; z-index: 1; width: min(240px, 72%); height: 7px; margin-top: 16px; border: 1px solid rgba(119, 141, 169, .55); opacity: 0; }
+.boot-progress span { display: block; width: 0; height: 100%; background: var(--mist); }

@@ -1,0 +1,150 @@
+/* Viewport-specific layout adjustments and reduced-motion behavior. */
+
+@media (min-width: 851px) and (min-height: 600px) {
+  body.projects-shell { height: 100vh; overflow: hidden; }
+  .projects-shell .projects-page {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    height: 100vh;
+    min-height: 0;
+    padding: 88px 0 34px;
+  }
+  .projects-page > .eyebrow { margin-bottom: 12px; }
+  .project-browser {
+    display: grid;
+    grid-template-rows: 37px 34px minmax(0, 1fr) 30px;
+    min-height: 0;
+  }
+  .project-browser-layout { min-height: 0; overflow: hidden; }
+  .project-directory,
+  .project-inspector {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-color: var(--mist) rgba(119, 141, 169, .12);
+    scrollbar-width: thin;
+  }
+  .project-directory::-webkit-scrollbar,
+  .project-inspector::-webkit-scrollbar { width: 7px; }
+  .project-directory::-webkit-scrollbar-track,
+  .project-inspector::-webkit-scrollbar-track { background: rgba(119, 141, 169, .12); }
+  .project-directory::-webkit-scrollbar-thumb,
+  .project-inspector::-webkit-scrollbar-thumb { background: var(--mist); }
+  .project-inspector { scrollbar-gutter: stable; }
+}
+
+@media (min-width: 851px) and (min-height: 600px) and (max-height: 820px) {
+  .directory-heading { min-height: 34px; }
+  .project-file { min-height: 68px; padding-top: 9px; padding-bottom: 9px; }
+}
+
+@media (min-width: 851px) and (min-height: 600px) and (max-height: 720px) {
+  .directory-heading { min-height: 30px; }
+  .project-file { min-height: 52px; padding: 6px 10px 6px 12px; }
+  .project-file-icon { width: 18px; height: 23px; }
+  .project-file-copy { gap: 2px; }
+  .project-visual { height: 190px; padding: 20px 24px; }
+  .project-panel-body { padding: 24px 28px 30px; }
+}
+
+@media (max-width: 850px) {
+  .landing { min-height: auto; padding-top: 155px; padding-bottom: 120px; }
+  .intro { grid-template-columns: 1fr; gap: 62px; }
+  .intro-copy { max-width: 650px; }
+  .pixel-window { width: min(680px, calc(100% - 15px)); margin: 0 auto; }
+  .site-footer { position: static; margin: 0 auto; transform: none; border-top: 1px solid var(--line); }
+  .about-page { padding-top: 155px; padding-bottom: 120px; }
+  .about-layout { grid-template-columns: 1fr; }
+  .about-copy { max-width: 700px; }
+  .call-window { width: min(620px, calc(100% - 16px)); }
+  .hobby-grid { grid-template-columns: 1fr; max-width: 620px; }
+  .hobby-card { display: grid; grid-template-columns: minmax(220px, .8fr) 1fr; }
+  .hobby-image { height: 100%; aspect-ratio: auto; border-right: 1px solid rgba(119, 141, 169, .42); border-bottom: 0; }
+  .projects-page { padding-top: 155px; }
+  .project-browser-layout { display: block; min-height: 0; }
+  .project-directory { border-right: 0; border-bottom: 1px solid rgba(119, 141, 169, .34); }
+  .project-tabs { display: flex; overflow-x: auto; overscroll-behavior-x: contain; }
+  .project-file { flex: 0 0 215px; border-right: 1px solid rgba(119, 141, 169, .2); border-bottom: 0; }
+  .experience-page { padding-top: 155px; }
+  .activities-grid { grid-template-columns: 1fr; }
+  .activity-card { min-height: 0; }
+}
+@media (max-width: 620px) {
+  :root { --page: calc(100vw - 32px); }
+  .site-header { padding-top: 18px; }
+  .menu-toggle { display: block; padding: 7px 0; border: 0; background: transparent; }
+  .site-nav { position: fixed; top: 58px; right: 0; left: 0; display: none; flex-direction: column; width: 100vw; gap: 0; padding: 12px 16px 20px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(13, 27, 42, .98); }
+  .site-nav.is-open { display: flex; }
+  .site-nav a { padding: 10px 0; }
+  .site-nav a::after { display: none; }
+  .landing { padding-top: 130px; }
+  h1 { font-size: clamp(2.5rem, 12vw, 3.7rem); }
+  .pixel-desktop { height: 330px; }
+  .desktop-icons { top: 20px; left: 16px; gap: 13px; }
+  .desktop-icon { grid-template-columns: 31px auto; gap: 8px; padding: 5px; font-size: .53rem; }
+  .folder { width: 29px; height: 21px; }
+  .folder::before { top: -5px; width: 14px; height: 6px; }
+  .desktop-note { top: 52px; right: 16px; width: min(340px, calc(100% - 110px)); min-width: 180px; max-width: calc(100% - 24px); }
+  .desktop-note.is-expanded { top: 12px; right: 12px; width: calc(100% - 24px) !important; height: calc(100% - 60px) !important; }
+  .terminal-launcher { right: 16px; bottom: 16px; }
+  .site-terminal { position: fixed; top: auto; right: 16px; bottom: 64px; width: calc(100vw - 32px); min-width: 0; max-width: calc(100vw - 32px); height: min(300px, calc(100vh - 120px)); max-height: calc(100vh - 96px); }
+  .site-terminal.is-expanded { position: fixed; top: 12px; right: 12px; bottom: auto; width: calc(100vw - 24px) !important; height: calc(100vh - 24px) !important; }
+  .note-body { padding: 11px 10px 9px; }
+  .note-body p { font-size: .52rem; }
+  .terminal-form input, .terminal-prompt { font-size: .52rem; }
+  .site-footer { flex-direction: column; gap: 5px; }
+  .about-page { padding-top: 120px; }
+  .about-layout { gap: 52px; }
+  .about-copy h1 { margin-bottom: 30px; }
+  .about-prose p { font-size: .92rem; }
+  .call-window { width: calc(100% - 12px); box-shadow: 10px 10px 0 rgba(27, 38, 59, .85); }
+  .hobbies-heading { margin-bottom: 32px; }
+  .hobby-card { display: block; }
+  .hobby-image { aspect-ratio: 4 / 3; border-right: 0; border-bottom: 1px solid rgba(119, 141, 169, .42); }
+  .hobby-card-copy { padding: 21px; }
+  .projects-page { padding-top: 120px; }
+  .project-browser { box-shadow: 9px 9px 0 rgba(27, 38, 59, .66); }
+  .project-address-bar { overflow: hidden; }
+  .project-file { flex-basis: 190px; min-height: 68px; padding-left: 12px; }
+  .project-visual { height: 215px; padding: 23px 20px; }
+  .project-visual > strong { max-width: 62%; font-size: 1.38rem; }
+  .visual-training, .visual-community, .visual-accessibility, .visual-museum { top: 22px; right: 4%; width: min(56%, 280px); transform: scale(.78); transform-origin: top right; }
+  .visual-combat { top: 30px; right: 4%; width: min(56%, 280px); transform: scale(.78); transform-origin: top right; }
+  .project-panel-body { padding: 25px 19px 29px; }
+  .project-heading { align-items: center; flex-direction: row; gap: 13px; }
+  .project-meta dd { font-size: .48rem; }
+  .project-notes { grid-template-columns: 1fr; gap: 18px; }
+  .project-browser-status { grid-template-columns: 1fr auto; }
+  .project-browser-status span:nth-child(2) { display: none; }
+  .experience-page { padding-top: 120px; }
+  .experience-intro { margin-bottom: 58px; }
+  .experience-list { gap: 45px; }
+  .experience-list::before { left: 15px; }
+  .experience-list::after { left: 14px; }
+  .experience-record { grid-template-columns: 32px minmax(0, 1fr); gap: 12px; }
+  .experience-marker { width: 32px; height: 32px; box-shadow: inset 0 0 0 3px var(--navy); font-size: .48rem; }
+  .experience-window { box-shadow: 7px 7px 0 rgba(27, 38, 59, .64); }
+  .experience-window-bar { padding: 0 9px; }
+  .experience-window-body { padding: 22px 18px 24px; }
+  .role-heading { flex-direction: column; gap: 13px; padding-bottom: 21px; }
+  .role-identity { align-items: flex-start; gap: 13px; }
+  .company-mark { width: 44px; height: 42px; padding: 7px; }
+  .company-mark--amd { width: 42px; height: 42px; padding: 7px; }
+  .company-mark--dream { width: 44px; height: 44px; padding: 4px; }
+  .company-mark--shield { width: 39px; height: 48px; padding: 4px; }
+  .role-meta { align-items: flex-start; text-align: left; }
+  .role-metrics { margin-top: 21px; }
+  .role-metrics div { padding: 10px 8px 12px; }
+  .role-metrics dt { min-height: 2.5em; font-size: .4rem; }
+  .role-metrics dd { font-size: .65rem; }
+  .role-highlights { gap: 15px; margin: 24px 0 27px; }
+  .role-highlights li { padding-left: 18px; font-size: .75rem; }
+  .role-footer { align-items: flex-start; flex-direction: column; gap: 18px; }
+  .experience-footer { margin-left: 44px; }
+  .activities-heading { margin-bottom: 32px; }
+  .activity-card { padding: 21px; }
+  .activity-card-top { margin-bottom: 30px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}

@@ -1,0 +1,71 @@
+/* Home-page desktop, boot sequence, icons, and taskbar. */
+
+.pixel-window { align-self: center; width: 100%; border: 1px solid var(--mist); box-shadow: 18px 18px 0 var(--navy); image-rendering: pixelated; }
+.window-bar { display: flex; gap: 6px; align-items: center; height: 35px; padding: 0 12px; background: var(--mist); }
+.pixel-desktop {
+  position: relative;
+  height: clamp(390px, 36vw, 470px);
+  overflow: hidden;
+  border: 14px solid var(--navy);
+  box-shadow: inset 0 0 0 1px rgba(224, 225, 221, .08);
+  background:
+    linear-gradient(135deg, transparent 0 47%, rgba(224, 225, 221, .09) 47% 49%, transparent 49% 100%),
+    radial-gradient(circle at 72% 34%, rgba(119, 141, 169, .58), transparent 37%),
+    linear-gradient(145deg, #233e5d, #10243a 72%);
+  font-family: var(--pixel);
+}
+.pixel-desktop::before {
+  position: absolute;
+  inset: 0 0 29px;
+  content: "";
+  opacity: .15;
+  background-image: linear-gradient(rgba(119, 141, 169, .14) 1px, transparent 1px), linear-gradient(90deg, rgba(119, 141, 169, .14) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.desktop-boot { display: none; }
+.desktop-boot[hidden] { display: none !important; }
+.landing-motion .pixel-window { transform-origin: center; animation: desktop-power-on .68s steps(8, end) both; }
+.landing-motion .desktop-boot {
+  position: absolute;
+  z-index: 10;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(24px, 6vw, 58px);
+  overflow: hidden;
+  color: var(--paper-soft);
+  background: #081421;
+  animation: boot-screen-out .28s steps(4, end) 2.48s forwards;
+}
+.landing-motion .desktop-boot::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  opacity: .22;
+  background: repeating-linear-gradient(to bottom, transparent 0 3px, rgba(224, 225, 221, .18) 3px 4px);
+  animation: boot-interference .18s steps(2, end) 6;
+}
+.landing-motion .boot-copy p:nth-child(1) { animation: boot-line-in .08s steps(1, end) .72s both; }
+.landing-motion .boot-copy p:nth-child(2) { animation: boot-line-in .08s steps(1, end) 1.05s both; }
+.landing-motion .boot-copy p:nth-child(3) { animation: boot-line-in .08s steps(1, end) 1.38s both; }
+.landing-motion .boot-copy .boot-ready { margin-top: 22px; color: var(--paper); animation: boot-line-in .08s steps(1, end) 2.06s both; }
+.landing-motion .boot-cursor { animation: blink .42s steps(1, end) 2; }
+.landing-motion .boot-progress { animation: boot-line-in .08s steps(1, end) 1.58s forwards; }
+.landing-motion .boot-progress span { animation: boot-progress 540ms steps(9, end) 1.62s forwards; }
+.landing-motion .desktop-icons,
+.landing-motion .desktop-note,
+.landing-motion .taskbar { opacity: 0; }
+.landing-motion.landing-ready .desktop-icons { animation: desktop-item-in .38s steps(5, end) forwards; }
+.landing-motion.landing-ready .desktop-note { animation: desktop-item-in .42s steps(5, end) .14s forwards; }
+.landing-motion.landing-ready .taskbar { animation: taskbar-in .3s steps(5, end) .06s forwards; }
+.desktop-icons { position: absolute; z-index: 2; top: 32px; left: 30px; display: flex; flex-direction: column; gap: 25px; }
+.desktop-icon { display: grid; grid-template-columns: 40px auto; gap: 12px; align-items: center; width: fit-content; padding: 7px 9px; color: var(--paper-soft); font-size: .66rem; text-shadow: 1px 1px 0 var(--ink); transition: color 120ms ease, background 120ms ease; }
+.desktop-icon:hover, .desktop-icon:focus-visible { color: white; background: rgba(119, 141, 169, .24); outline: 1px solid rgba(224, 225, 221, .42); outline-offset: 0; }
+.folder { position: relative; width: 38px; height: 27px; margin-top: 5px; background: var(--mist); box-shadow: inset 0 -5px rgba(13, 27, 42, .16); }
+.folder::before { position: absolute; top: -6px; left: 3px; width: 17px; height: 7px; content: ""; background: var(--mist); }
+.desktop-icon:hover .folder, .desktop-icon:hover .folder::before, .desktop-icon:focus-visible .folder, .desktop-icon:focus-visible .folder::before { background: var(--paper); }
+.taskbar { position: absolute; z-index: 5; right: 0; bottom: 0; left: 0; display: flex; align-items: center; gap: 9px; height: 36px; padding: 0 9px; border-top: 1px solid rgba(224, 225, 221, .2); background: rgba(65, 90, 119, .88); }
+.start-button { display: grid; width: 20px; height: 20px; place-items: center; color: var(--ink); background: var(--paper); font-size: .6rem; font-weight: 700; }
+.taskbar-app { width: 18px; height: 15px; border: 1px solid rgba(224, 225, 221, .45); background: rgba(13, 27, 42, .45); }
+.taskbar-time { margin-left: auto; color: var(--paper); font-size: .47rem; }
