@@ -10,7 +10,16 @@
 html, body { min-height: 100%; }
 body {
   margin: 0; color: var(--paper);
-  background: radial-gradient(circle at 78% 12%, rgba(65, 90, 119, 0.2), transparent 28rem), var(--ink);
+  background:
+    radial-gradient(circle at 78% 12%, rgba(65, 90, 119, .2), transparent 28rem),
+    radial-gradient(ellipse at 50% 36%, transparent 34%, rgba(13, 27, 42, .16) 76%, rgba(13, 27, 42, .42) 100%),
+    linear-gradient(rgba(119, 141, 169, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(119, 141, 169, .045) 1px, transparent 1px),
+    linear-gradient(rgba(119, 141, 169, .07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(119, 141, 169, .07) 1px, transparent 1px),
+    var(--ink);
+  background-attachment: fixed;
+  background-size: auto, auto, 48px 48px, 48px 48px, 240px 240px, 240px 240px, auto;
   font-family: var(--sans); font-size: 16px; line-height: 1.65; -webkit-font-smoothing: antialiased;
 }
 body::before {
@@ -187,8 +196,6 @@ h1 {
 .page-shell > p:not(.eyebrow) { margin-bottom: 35px; color: var(--paper-soft); font-family: var(--pixel); font-size: .8rem; }
 
 .projects-page { width: var(--page); min-height: 100vh; margin: 0 auto; padding: 145px 0 120px; }
-.projects-page > h1 { margin-bottom: 28px; }
-.projects-lede { max-width: 600px; margin: 20px 0 clamp(48px, 6vw, 72px); color: var(--mist); font-family: var(--pixel); font-size: .68rem; }
 .project-browser { position: relative; overflow: hidden; border: 1px solid rgba(119, 141, 169, .64); background: rgba(13, 27, 42, .74); box-shadow: 15px 15px 0 rgba(27, 38, 59, .66); font-family: var(--pixel); }
 .project-browser-bar { display: flex; min-height: 37px; align-items: center; justify-content: space-between; padding: 0 13px 0 18px; color: var(--ink); background: var(--mist); font-size: .55rem; letter-spacing: .05em; text-transform: uppercase; }
 .project-boot { display: none; }
@@ -694,6 +701,53 @@ h1 {
   100% { opacity: 1; transform: translateX(0); }
 }
 
+@media (min-width: 851px) and (min-height: 600px) {
+  body.projects-shell { height: 100vh; overflow: hidden; }
+  .projects-shell .projects-page {
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    height: 100vh;
+    min-height: 0;
+    padding: 88px 0 34px;
+  }
+  .projects-page > .eyebrow { margin-bottom: 12px; }
+  .project-browser {
+    display: grid;
+    grid-template-rows: 37px 34px minmax(0, 1fr) 30px;
+    min-height: 0;
+  }
+  .project-browser-layout { min-height: 0; overflow: hidden; }
+  .project-directory,
+  .project-inspector {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-color: var(--mist) rgba(119, 141, 169, .12);
+    scrollbar-width: thin;
+  }
+  .project-directory::-webkit-scrollbar,
+  .project-inspector::-webkit-scrollbar { width: 7px; }
+  .project-directory::-webkit-scrollbar-track,
+  .project-inspector::-webkit-scrollbar-track { background: rgba(119, 141, 169, .12); }
+  .project-directory::-webkit-scrollbar-thumb,
+  .project-inspector::-webkit-scrollbar-thumb { background: var(--mist); }
+  .project-inspector { scrollbar-gutter: stable; }
+}
+
+@media (min-width: 851px) and (min-height: 600px) and (max-height: 820px) {
+  .directory-heading { min-height: 34px; }
+  .project-file { min-height: 68px; padding-top: 9px; padding-bottom: 9px; }
+}
+
+@media (min-width: 851px) and (min-height: 600px) and (max-height: 720px) {
+  .directory-heading { min-height: 30px; }
+  .project-file { min-height: 52px; padding: 6px 10px 6px 12px; }
+  .project-file-icon { width: 18px; height: 23px; }
+  .project-file-copy { gap: 2px; }
+  .project-visual { height: 190px; padding: 20px 24px; }
+  .project-panel-body { padding: 24px 28px 30px; }
+}
+
 @media (max-width: 850px) {
   .landing { min-height: auto; padding-top: 155px; padding-bottom: 120px; }
   .intro { grid-template-columns: 1fr; gap: 62px; }
@@ -745,7 +799,6 @@ h1 {
   .hobby-image { aspect-ratio: 4 / 3; border-right: 0; border-bottom: 1px solid rgba(119, 141, 169, .42); }
   .hobby-card-copy { padding: 21px; }
   .projects-page { padding-top: 120px; }
-  .projects-lede { margin-bottom: 38px; }
   .project-browser { box-shadow: 9px 9px 0 rgba(27, 38, 59, .66); }
   .project-address-bar { overflow: hidden; }
   .project-file { flex-basis: 190px; min-height: 68px; padding-left: 12px; }

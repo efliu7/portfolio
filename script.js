@@ -119,6 +119,7 @@ if (projectBrowser && projectBoot && !reduceMotion.matches) {
 if (projectBrowser) {
   const projectTabs = [...projectBrowser.querySelectorAll("[data-project-target]")];
   const projectPanels = [...projectBrowser.querySelectorAll("[role='tabpanel']")];
+  const projectInspector = projectBrowser.querySelector(".project-inspector");
   const projectStatus = projectBrowser.querySelector("[data-project-status]");
   const projectPath = projectBrowser.querySelector("[data-project-path]");
 
@@ -137,6 +138,8 @@ if (projectBrowser) {
       panel.hidden = panel !== selectedPanel;
       panel.classList.remove("is-loading");
     });
+
+    if (projectInspector) projectInspector.scrollTop = 0;
 
     if (!reduceMotion.matches) {
       requestAnimationFrame(() => selectedPanel.classList.add("is-loading"));

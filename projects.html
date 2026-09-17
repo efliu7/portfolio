@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
-  <body>
+  <body class="projects-shell">
     <header class="site-header">
       <a class="wordmark" href="index.html" aria-label="Ethan Liu, home"><span aria-hidden="true">E</span><span class="wordmark-cursor" aria-hidden="true"></span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-menu-toggle><span class="sr-only">Toggle navigation</span><span aria-hidden="true">menu</span></button>
@@ -17,13 +17,7 @@
     </header>
     <main class="projects-page" id="main">
       <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>Directory / projects</p>
-      <h1 class="ascii-heading ascii-heading-wide" id="projects-title" aria-label="Projects"><span aria-hidden="true">██████╗ ██████╗  ██████╗      ██╗███████╗ ██████╗████████╗███████╗
-██╔══██╗██╔══██╗██╔═══██╗     ██║██╔════╝██╔════╝╚══██╔══╝██╔════╝
-██████╔╝██████╔╝██║   ██║     ██║█████╗  ██║        ██║   ███████╗
-██╔═══╝ ██╔══██╗██║   ██║██   ██║██╔══╝  ██║        ██║   ╚════██║
-██║     ██║  ██║╚██████╔╝╚█████╔╝███████╗╚██████╗   ██║   ███████║
-╚═╝     ╚═╝  ╚═╝ ╚═════╝  ╚════╝ ╚══════╝ ╚═════╝   ╚═╝   ╚══════╝</span></h1>
-      <p class="projects-lede">A selection of products, experiments, and team builds. Choose a file to inspect the project.</p>
+      <h1 class="sr-only" id="projects-title">Projects</h1>
 
       <section class="project-browser" aria-labelledby="projects-title" data-project-browser>
         <div class="project-browser-bar"><span>project_explorer</span><div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div></div>
