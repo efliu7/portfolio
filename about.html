@@ -28,6 +28,18 @@
         <a href="https://drive.google.com/file/d/12K8Z2sb5uFqbBXeucd8AHHMx-eDDHIYc/view?usp=sharing" target="_blank" rel="noreferrer">Résumé <span aria-hidden="true">↗</span></a>
       </nav>
     </header>
+    <button class="terminal-launcher" type="button" data-terminal-toggle aria-controls="site-terminal" aria-expanded="false" title="Open terminal (Ctrl/Cmd + `)"><span aria-hidden="true">&gt;_</span> terminal</button>
+    <section class="desktop-note site-terminal" id="site-terminal" data-terminal aria-label="Interactive portfolio terminal" hidden>
+      <div class="note-bar"><strong>terminal.exe</strong><div class="note-controls"><span aria-hidden="true"></span><button class="terminal-expand" type="button" data-terminal-expand aria-label="Expand terminal" aria-pressed="false" title="Expand terminal"></button><button class="terminal-close" type="button" data-terminal-close aria-label="Close terminal" title="Close terminal"></button></div></div>
+      <div class="note-body">
+        <div class="terminal-output" data-terminal-output aria-live="polite" aria-atomic="false"><p><span>&gt;</span> hello, world!</p><p class="terminal-hint">type "help" to explore</p></div>
+        <form class="terminal-form" data-terminal-form autocomplete="off">
+          <label class="sr-only" for="terminal-input">Enter a portfolio command</label><span class="terminal-prompt" aria-hidden="true">&gt;</span>
+          <span class="terminal-input-wrap"><input id="terminal-input" data-terminal-input type="text" inputmode="text" enterkeyhint="send" autocapitalize="off" autocomplete="off" spellcheck="false" aria-describedby="terminal-help" /><span class="note-cursor" aria-hidden="true"></span></span>
+          <span class="sr-only" id="terminal-help">Type help for available commands, then press Enter.</span>
+        </form>
+      </div>
+    </section>
 
     <main class="about-page" id="main">
       <section class="about-layout" aria-labelledby="about-title">

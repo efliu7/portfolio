@@ -71,10 +71,22 @@
               <a class="desktop-icon" href="experience.html"><span class="folder" aria-hidden="true"></span><span>experience</span></a>
               <a class="desktop-icon" href="about.html"><span class="folder" aria-hidden="true"></span><span>about_me</span></a>
             </div>
-            <div class="desktop-note" aria-hidden="true">
-              <div class="note-bar"><span></span><span></span><span></span></div>
+            <div class="desktop-note" data-terminal aria-label="Interactive portfolio terminal">
+              <div class="note-bar"><strong>terminal.exe</strong><div class="note-controls" aria-hidden="true"><span></span><span></span><span></span></div></div>
               <div class="note-body">
-                <p><span>&gt;</span> hello, world!</p>
+                <div class="terminal-output" data-terminal-output aria-live="polite" aria-atomic="false">
+                  <p><span>&gt;</span> hello, world!</p>
+                  <p class="terminal-hint">type "help" to explore</p>
+                </div>
+                <form class="terminal-form" data-terminal-form autocomplete="off">
+                  <label class="sr-only" for="terminal-input">Enter a portfolio command</label>
+                  <span class="terminal-prompt" aria-hidden="true">&gt;</span>
+                  <span class="terminal-input-wrap">
+                    <input id="terminal-input" data-terminal-input type="text" inputmode="text" enterkeyhint="send" autocapitalize="off" autocomplete="off" spellcheck="false" aria-describedby="terminal-help" />
+                    <span class="note-cursor" aria-hidden="true"></span>
+                  </span>
+                  <span class="sr-only" id="terminal-help">Type help for available commands, then press Enter.</span>
+                </form>
               </div>
             </div>
             <div class="taskbar">
